@@ -10,6 +10,6 @@ const routes = [
   hardware
 ];
 
-router.use('/api', routes);
+router.use(routes);
 
 export { router }
