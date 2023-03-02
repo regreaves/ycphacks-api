@@ -1,15 +1,18 @@
 import express from 'express';
 
-import { hardware } from './hardware.mjs';
+import { auth, requiredScopes } from 'express-oauth2-jwt-bearer';
 
 const router = express.Router();
 
-router.use(express.json());
+router.use(auth());
 
-const routes = [
-  hardware
-];
+router.route('/api/v1/hardware')
+  .get(requiredScopes('read:hardware'), async (req, res, next) => {
+    const data = { key: 'value' };
 
-router.use(routes);
+    console.log(data);
 
-export { router }
+    res.status(200).json(data);
+  });
+
+export { router };
