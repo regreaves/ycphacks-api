@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.use(auth());
 
-router.route('/v1/hardware')
+router.route('/api/v1/hardware')
   .get(requiredScopes('read:hardware'), async (req, res, next) => {
     const data = { key: 'value' };
 
