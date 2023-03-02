@@ -9,7 +9,7 @@ router.use(auth({
   audience: 'https://api'
 }));
 
-router.route('/v1/hardware')
+router.route('/api/v1/hardware')
   .get(requiredScopes('read:hardware'), async (req, res, next) => {
     const data = { key: 'value' };
 
