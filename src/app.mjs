@@ -6,6 +6,4 @@ const app = express();
 
 app.use(router);
 
-// TODO: error-handling middleware
-
-export { app }
+export { app };
