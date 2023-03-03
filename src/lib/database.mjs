@@ -16,9 +16,9 @@ export async function list_hardware_items(config) {
     const session = await mysqlx.getSession(config);
 
     const data    = await session.sql('SELECT * FROM hardware_items;').execute();
-    const all     = await data.fetchAll();
+    const result  = await data.fetchAll();
 
-    return all;
+    return result;
   } catch (error) {
     console.error(error);
   }
