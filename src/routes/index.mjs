@@ -1,9 +1,10 @@
 import express from 'express';
 
-import { auth, requiredScopes } from 'express-oauth2-jwt-bearer';
+import { hardware } from './hardware.mjs';
 
 const router = express.Router();
 
+<<<<<<< Updated upstream
 router.route('/api/v1/sponsors')
   .get((req, res) => {
     const data = { key: 'value' };
@@ -19,5 +20,12 @@ router.route('/api/v1/hardware')
 
     res.status(200).json(data);
   });
+=======
+const routes = [
+  hardware
+];
+
+router.use('/api/v1', routes);
+>>>>>>> Stashed changes
 
 export { router };
