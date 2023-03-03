@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { auth, requiredScopes } from 'express-oauth2-jwt-bearer';
+// import { auth, requiredScopes } from 'express-oauth2-jwt-bearer';
 
 import { config, list_hardware_items } from '../lib/database.mjs';
 
