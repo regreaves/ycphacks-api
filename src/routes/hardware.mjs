@@ -13,10 +13,11 @@ router.route('/sponsors')
     res.status(200).json(data);
   });
 
-router.use(auth());
+// router.use(auth());
 
 router.route('/hardware')
-  .get(requiredScopes('read:hardware'), async (req, res, next) => {
+//  .get(requiredScopes('read:hardware'), async (req, res, next) => {
+  .get(async (req, res, next) => {
     const data = await list_hardware_items(config);
 
     console.log(data);
