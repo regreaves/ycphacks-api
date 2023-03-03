@@ -18,11 +18,10 @@ router.route('/sponsors')
 router.route('/hardware')
 //  .get(requiredScopes('read:hardware'), async (req, res, next) => {
   .get(async (req, res, next) => {
-    const data = await list_hardware_items(config);
-
-    console.log(data);
-
-    res.status(200).json(data);
+    const data   = await list_hardware_items(config);
+    const result = await data.json();
+  
+    res.status(200).json(result);
   });
 
 export { router as hardware };
