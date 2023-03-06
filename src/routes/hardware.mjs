@@ -1,5 +1,7 @@
 import express from 'express';
 
+import { auth, requiredScopes } from 'express-oauth2-jwt-bearer';
+
 import { config, list_hardware_items } from '../lib/database.mjs';
 
 const router = express.Router();
@@ -11,10 +13,14 @@ router.route('/sponsors')
     res.status(200).json(data);
   });
 
+router.use(auth());
+
 router.route('/hardware')
-  .get((req, res) => {
-    const data = [["10908791783496351755","name","link","category","available","2023-02-27T04:24:50.000Z","2023-02-27T04:24:50.000Z","location"],["10908791783496351756","name","link","category","available","2023-02-27T04:24:50.000Z","2023-02-27T04:24:50.000Z","location"],["10908791783496351757","name","link","category","available","2023-02-27T04:24:50.000Z","2023-02-27T04:24:50.000Z","location"],["10908791783496351758","name","link","category","available","2023-02-27T04:24:50.000Z","2023-02-27T04:24:50.000Z","location"],["10908791783496351759","wire","link","wires","available","2023-03-03T05:31:57.000Z","2023-03-03T05:31:57.000Z","location"]];
-    
+  .get(requiredScopes('read:hardware'), async (req, res, next) => {
+    const data = await list_hardware_items(config);
+
+    console.log(data);
+
     res.status(200).json(data);
   });
 
