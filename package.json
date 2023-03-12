@@ -1,7 +1,7 @@
 {
   "name": "api",
   "scripts": {
-    "start": "node src/server.mjs"
+    "start": "node server.mjs"
   },
   "dependencies": {
     "@mysql/xdevapi": "^8.0.32",
